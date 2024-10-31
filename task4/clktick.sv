@@ -10,7 +10,7 @@ module clktick #(
 );
 
 logic [WIDTH-1:0] count;
-    
+
 always_ff @ (posedge clk)
     if (rst) begin
         tick <= 1'b0;

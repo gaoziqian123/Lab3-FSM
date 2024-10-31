@@ -1,13 +1,17 @@
 module f1_fsm (
     input   logic       rst,
-    input   logic       en,
     input   logic       clk,
     output  logic [7:0] data_out
 );
     typedef enum logic [3:0] {s0, s1, s2, s3, s4, s5, s6, s7, s8} my_state;
     my_state current_state;
-
-
+    wire en;
+clktick instance1(  .clk(clk),
+                    .rst(rst),
+                    .en(1),
+                    .N(40),
+                    .tick(en)
+                    );
     always_ff @(posedge clk or posedge rst) begin
         if (rst) begin
             current_state <= s0;
